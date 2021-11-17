@@ -1,0 +1,10 @@
+[{
+  "url": "/auth",
+  "controller": "./../controllers/v1/auth",
+  "routes": [{
+    "url": "/register",
+    "routes": [
+      { "method": "post", "function": "register" }
+    ]
+  }]
+}]

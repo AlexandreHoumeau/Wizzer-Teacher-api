@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-// import routes from '@api/routes/index'
+import routes from '@api/routes/index'
 import jsonwebtoken from 'jsonwebtoken'
 import { jwt } from '@shared/config'
 // import Session from '@modules/session'
@@ -64,15 +64,9 @@ const redirect = async (req, res, next) => {
 }
 
 const errors = (error, req, res, next) => { // eslint-disable-line no-unused-vars
-  const stack = VError.fullStack(error)
+  // const stack = VError.fullStack(error)
   const { code, message, data } = error
-
-  logger.error(message, {
-    tags: ['server', 'starts'],
-    error: JSON.stringify(data),
-    stack: JSON.stringify(stack)
-  })
-
+  console.log(message)
   if (data?.notification) {
     return res.status(code).json({
       $notification: data.notification,
@@ -93,11 +87,11 @@ const routerInit = (router) => {
     })
 
     // // Decode JWT
-    // router.use(decodeJwt)
-    // router.use(redirect)
+    router.use(decodeJwt)
+    router.use(redirect)
 
     // // Public routes
-    // routes.public(router)
+    routes.public(router)
 
     // // Check User + User routes
     // router.use(authenticate)

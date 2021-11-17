@@ -8,42 +8,30 @@ import http from 'http'
 import express from 'express'
 import helmet from 'helmet'
 import bodyParser from 'body-parser'
-import winston, { format } from 'winston'
-// import { ElasticsearchTransport } from 'winston-elasticsearch'
-
-// import Errors from '@utils/errors'
-// import loggerformat from '@utils/loggers'
-// import initModels from '@models/init'
-// import timestamps from '@utils/mongoose/timestamps'
 import { databases } from '@shared/config'
+import Errors from '@utils/errors'
 
 const PORT = process.env.PORT || 3002
 
 mongoose.Promise = global.Promise
-// mongoose.plugin(timestamps)
 mongoose.set('useCreateIndex', true)
 mongoose.set('useFindAndModify', false)
 
-// Diffusion des erreurs en global
-// global.ValidationError = Errors.ValidationError
-// global.NotFoundError = Errors.NotFoundError
-// global.ServiceError = Errors.ServiceError
-// global.CatchError = Errors.CatchError
+global.ValidationError = Errors.ValidationError
+global.NotFoundError = Errors.NotFoundError
+global.ServiceError = Errors.ServiceError
+global.CatchError = Errors.CatchError
 
 const start = async () => {
   try {
     // Initialisation des connexions
-    // const mongoDev = await mongoose.createConnection(databases.mongoDev.host, databases.mongoDev.options)
-    // const mongoApps = await mongoose.createConnection(databases.mongoApps.host, databases.mongoApps.options)
-    // const redisApps = await redis.createClient(databases.redis)
-    // const elasticsearch = new Client(databases.elasticsearch)
+    const mongoDev = await mongoose.createConnection(databases.mongoDev.host, databases.mongoDev.options)
+    const mongoApps = await mongoose.createConnection(databases.mongoApps.host, databases.mongoApps.options)
 
     global.connections = {
-      // mongoDev,
-      // mongoApps
+      mongoDev,
+      mongoApps
     }
-
-    // global.logger = logger
 
     const initRouter = require('./middlewares/router').default
 
@@ -87,29 +75,13 @@ const start = async () => {
 
     server.listen(PORT, () => {
       console.log(`Server start on port ${PORT}`)
-      // logger.info(`Server starts on port ${PORT}`, {
-      //   tags: ['server', 'starts']
-      // })
     })
 
     if (process.send) {
       process.send('ready')
     }
-
-    // process.on('SIGINT', async () => {
-    //   // await mongoDev.close()
-    //   // await mongoApps.close()
-    //   // await redisApps.quit()
-    //   // logger.end()
-
-    //   process.exit(0)
-    // })
   } catch (error) {
     console.error(error)
-    // logger.error('Server closed', {
-    //   tags: ['server', 'closed'],
-    //   error: error.message
-    // })
   }
 }
 
