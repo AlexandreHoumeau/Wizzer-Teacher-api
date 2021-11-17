@@ -1,0 +1,51 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "es2020": true,
+        "node": true
+    },
+    "extends": "airbnb-base",
+    "settings": {
+        "import/resolver": {
+          "babel-module": {}
+        }
+    },
+    "rules": {
+        "indent": [
+            "error",
+            2,
+            {
+                "MemberExpression": "off"
+            }
+        ],
+        "semi": ["error", "never"],
+        "comma-dangle": ["error", "never"],
+        "no-underscore-dangle": 0,
+        "max-len": 0,
+        "object-curly-spacing": [
+            "error",
+            "always",
+            {
+                "arraysInObjects": false,
+                "objectsInObjects": false
+            }
+        ],
+        "object-curly-newline": 0,
+        "no-nested-ternary": 0,
+        "func-names": 0,
+        "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+        "prefer-promise-reject-errors": 0,
+        "no-await-in-loop": 0,
+        "no-throw-literal": 0
+    },
+    "globals": {
+        "io": false,
+        "connections": false,
+        "databases": false,
+        "ValidationError": false,
+        "NotFoundError": false,
+        "ServiceError": false,
+        "CatchError": false,
+        "logger": false
+    }
+}

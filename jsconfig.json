@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@api/*": ["./src/api/*"],
+            // "@scrapper/*": ["src/scrapper/*"],
+            // "@cron/*": ["src/cron/*"],
+            // "@match/*": ["./src/match/*"],
+            // "@synchronize/*": ["./src/synchronize/*"],
+            // "@task/*": ["./src/task/*"],
+            "@shared/*": ["./src/shared/*"],
+            "@models/*": ["./src/shared/models/*"],
+            "@services/*": ["./src/shared/services/*"],
+            "@modules/*": ["./src/shared/modules/*"],
+            // "@elasticsearch/*": ["./src/shared/elasticsearch/*"],
+            "@utils/*": ["./src/shared/utils/*"],
+            "@assets/*": ["./src/shared/assets/*"]
+        }
+    }
+}
