@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose'
-import { date, dateDefault, mixed, emailString, phoneNumber, falseBoolean, trimmedString, passwordString, lowerCaseString, number, boolean } from '@utils/schemaTypes'
+import { date, dateDefault, mixed, emailString, falseBoolean, trimmedString, passwordString, lowerCaseString } from '@utils/schemaTypes'
 import locals from '@shared/mongoose/locals'
 
 const schema = new Schema({
@@ -48,65 +48,18 @@ const schema = new Schema({
   password: passwordString, // Mot de passe (bcrypt)
 
   // Identité
-  civility: trimmedString, // Civilité (Monsieur, Madame)
+  // civility: trimmedString, // Civilité (Monsieur, Madame)
   firstName: trimmedString, // Prénom
   lastName: trimmedString, // Nom
-  phone: phoneNumber, // Numéro de téléphone (avec indicatif (33))
   picture: { ...trimmedString, default: 'https://storage.googleapis.com/split/accounts/profilPicture.png' }, // Photo de profil
-  birthdate: date, // Date d'anniversaire
-  // seekingStatus: { ...trimmedString, default: 'medium' }, // Statut de recherche d'emplois [high, medium, low, none]
-  completion: number, // Pourcentage de completion du profil
+
   role: lowerCaseString, // Roles (Manager commercial, Consultant...)
-  // expoPushTokens: [trimmedString], // Notification Tokens
-  about: trimmedString,
-  bio: trimmedString,
-  details: [trimmedString],
-  exp: trimmedString,
-  location: {
-    presentiel: boolean,
-    remote: boolean,
-    location: [{
-      value: number,
-      label: trimmedString
-    }]
-  },
-  // photo: [{
-  //   data_url: trimmedString,
-  //   file: {
-  //     lastModified: trimmedString,
-  //     name: trimmedString,
-  //     size: number,
-  //     type: trimmedString
-  //   }
-  // }],
+
   profile: trimmedString,
   sector: trimmedString,
-  // secondChance: trueBoolean, // Enable seconde chance
-  // search: trueBoolean, // Enable in search
-
-  // informations: { // Trombinoscope profile
-  //   arrivalDate: date,
-  //   beforeUptoo: trimmedString,
-  //   citation: trimmedString,
-  //   extra: trimmedString, // hobbies, livres/film préférés etc..
-  //   presentation: trimmedString
-  // },
-
-  // Etats
-  // isHired: falseBoolean, // A été embauché
-  // isShortlisted: falseBoolean, // A été shortlisté
-  // isDisrupted: falseBoolean, // A été redlisté
-  // isAssessed: falseBoolean, // A été évalué
-  // inProcess: falseBoolean, // Est en process actuellement
-  // isActive: falseBoolean, // Compte actif / inactif
 
   // Informations
   type: { ...lowerCaseString, default: 'user' }, // guest, user, client, admin, developer
-  // tags: [trimmedString], // candidate, coach, attendee, client, diagnostic, assessment, employee, prospect, recruiter, assessed, smart, pop, display, elearning, training, presential
-  // source: trimmedString, // UTM_SOURCE
-  // medium: trimmedString, // UTM_MEDIUM
-  // campaign: trimmedString, // UTM_CAMPAIGN
-  // ip: trimmedString, // Adresse ip lors de la création du compte
 
   // Tokens
   tokens: {
@@ -116,20 +69,10 @@ const schema = new Schema({
     email: trimmedString
   },
 
-  // monitoring: trimmedString, // Application monitoring
-  // referenceType: trimmedString, // Type de PDR créées par le candidat
-  // question: trimmedString, // Question personnalisée PDR : intégrée aux nouvelles PDR créées par le candidat
-
   authenticator: {
     secret: mixed,
     isEnabled: falseBoolean
   },
-
-  // Management
-  // listenings: {
-  //   skills: [trimmedString], // Compétences des listens
-  //   results: [{ type: Schema.Types.ObjectId, ref: 'Listening' }] // Résultats
-  // },
 
   // Linkedin Profile
   linkedinUrl: trimmedString, // Linkedin Url
@@ -143,15 +86,6 @@ const schema = new Schema({
     accessToken: trimmedString, // Acces au compte GSuite
     expiresAt: date // Expiration du token
   },
-  // hubspot: {
-  //   userId: trimmedString,
-  //   ownerId: trimmedString,
-  //   contactId: trimmedString
-  // },
-  // edusign: {
-  //   professorId: trimmedString,
-  //   studentId: trimmedString
-  // },
 
   // Connections
   permissions: [trimmedString], // Nom des permissions
@@ -185,60 +119,6 @@ const schema = new Schema({
     type: trimmedString
   }]
 
-  // Notifications
-  // notifications: {
-  //   client: trimmedString,
-  //   missions: trimmedString, // null, recap, automatic
-  //   selection: trimmedString,
-  //   interviews: trimmedString,
-  //   applications: trimmedString
-  // },
-
-  // Preferences
-  // newsletters: {
-  //   marketing: falseBoolean, // Etudes Salaires, marché emploi... LIST 163
-  //   jobAlert: falseBoolean, // ALERTE JOB HEBDO LIST 164
-  //   hunts: falseBoolean, // MAILS DE CHASSE LIST 162
-  //   monitoring: trueBoolean // SUIVI DE CANDIDATURE LIST 161
-  // },
-
-  // goals: [
-  //   {
-  //     _counter: { type: Schema.Types.ObjectId, ref: 'Counter' },
-  //     month: number,
-  //     year: number,
-  //     value: number
-  //   }
-  // ],
-  // feedPreferences: {
-  //   companies: { ...trimmedString, default: 'me' }, // COMPANIES I WANT TO SEE [all, team, me]
-  //   types: [] // LIST OF ACTIVITY TYPES
-  // },
-
-  // turnover: number, // average of experiences, in month
-  // writingRate: number, // Writing rate for writers
-
-  // // LISTENS V2 FOR MANAGERS
-  // todo: [
-  //   {
-  //     date, // Date de la todo
-  //     content: trimmedString // contenu de la note
-  //   }
-  // ],
-
-  // // Coachs
-  // coach: {
-  //   company: trimmedString, // Company for invoicing
-  //   address: trimmedString, // Address for invoicing
-  //   price: number, // Price for session slot
-  //   contractDate: date, // Contract date
-  //   zoom: {
-  //     iv: trimmedString, // Iv to decrypt the token
-  //     key: trimmedString, // Key to decrypt the token
-  //     encryptedData: trimmedString, // Encrypted token
-  //     email: trimmedString // Email zoom account
-  //   }
-  // }
 })
 
 schema.plugin(locals)

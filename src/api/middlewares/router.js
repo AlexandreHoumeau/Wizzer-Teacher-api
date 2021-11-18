@@ -3,7 +3,6 @@ import routes from '@api/routes/index'
 import jsonwebtoken from 'jsonwebtoken'
 import { jwt } from '@shared/config'
 // import Session from '@modules/session'
-import { VError } from 'verror'
 
 const decodeJwt = (req, res, next) => {
   const header = req?.headers?.authorization
@@ -66,7 +65,6 @@ const redirect = async (req, res, next) => {
 const errors = (error, req, res, next) => { // eslint-disable-line no-unused-vars
   // const stack = VError.fullStack(error)
   const { code, message, data } = error
-  console.log(message)
   if (data?.notification) {
     return res.status(code).json({
       $notification: data.notification,
