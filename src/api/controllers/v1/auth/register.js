@@ -38,7 +38,6 @@ export default async (req, res, next) => {
       .findOne({ email: values.email })
       .select('_id type')
       .exec()
-    console.log(person)
     if (person) {
       return next(new ValidationError('Un compte avec cet email existe déjà'))
     }
