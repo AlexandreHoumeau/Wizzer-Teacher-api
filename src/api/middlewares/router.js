@@ -65,13 +65,14 @@ const redirect = async (req, res, next) => {
 const errors = (error, req, res, next) => { // eslint-disable-line no-unused-vars
   // const stack = VError.fullStack(error)
   const { code, message, data } = error
+  console.log()
   if (data?.notification) {
-    return res.status(code).json({
+    return res.status(code || 400).json({
       $notification: data.notification,
       $redirect: undefined
     })
   }
-  return res.status(code).json({
+  return res.status(code || 400).json({
     $message: message,
     $redirect: undefined
   })

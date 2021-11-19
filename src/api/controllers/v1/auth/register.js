@@ -46,7 +46,6 @@ export default async (req, res, next) => {
       isActive: true,
       lastLogin: new Date()
     })
-
     // On valide automatiquement le compte client si c'est spécifié
     if (person.type === 'teacher' && req.body.isVerified) {
       values._verifiedEmail = moment()
@@ -61,19 +60,19 @@ export default async (req, res, next) => {
 
     // Set values
     person.set(values)
-    delete person.photo
+    // delete person.photo
 
     // Enregistrement
     await person.save()
 
     // Initialisation de la session
-    await Session.generate(person._id)
+    // await Session.generate(person._id)
 
     // // Création du token
-    const $token = await Session.jwt(person._id)
+    // const $token = await Session.jwt(person._id)
 
     return res.json({
-      $token
+      success: true
     })
   } catch (err) {
     return next(err)
