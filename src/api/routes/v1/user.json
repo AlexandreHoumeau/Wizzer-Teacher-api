@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "url": "/me",
+    "controller": "./../controllers/v1/user",
+    "routes": [
+      {
+        "method": "get",
+        "function": "me"
+      }
+    ]
+  }
+]

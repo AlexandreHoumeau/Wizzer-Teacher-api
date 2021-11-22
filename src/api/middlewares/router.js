@@ -31,7 +31,7 @@ const authenticate = async (req, res, next) => {
   }
   try {
     // Get Redis Session
-    await Session.get(req.user._id)
+    // await Session.get(req.user._id)
     return next()
   } catch (err) {
     return next(new CatchError(err))
@@ -65,7 +65,6 @@ const redirect = async (req, res, next) => {
 const errors = (error, req, res, next) => { // eslint-disable-line no-unused-vars
   // const stack = VError.fullStack(error)
   const { code, message, data } = error
-  console.log()
   if (data?.notification) {
     return res.status(code || 400).json({
       $notification: data.notification,
@@ -92,9 +91,9 @@ const routerInit = (router) => {
     // // Public routes
     routes.public(router)
 
-    // // Check User + User routes
-    // router.use(authenticate)
-    // routes.user(router)
+    // Check User + User routes
+    router.use(authenticate)
+    routes.user(router)
 
     // // Client routes
     // permit(router, ['client', 'admin', 'developer'])
