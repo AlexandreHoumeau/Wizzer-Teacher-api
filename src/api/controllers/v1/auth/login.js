@@ -42,8 +42,7 @@ const login = async (req, res, next) => {
 
     // Création du filter avec le type
     const filter = {
-      email: values.email,
-      type: 'user'
+      email: values.email
     }
 
     const person = await Person
