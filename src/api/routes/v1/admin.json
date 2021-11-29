@@ -1,1 +1,5 @@
-[]
+[{
+  "url": "/modules",
+  "controller": "./../controllers/v1/modules",
+  "routes": [{ "method": "post", "function": "create" }]
+}]
