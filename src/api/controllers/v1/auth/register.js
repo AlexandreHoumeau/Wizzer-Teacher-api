@@ -3,7 +3,6 @@ import moment from 'moment'
 
 import { validations } from 'indicative/validator'
 import Person from '@models/person'
-import Session from '@modules/session'
 
 import Request from '@utils/request'
 
