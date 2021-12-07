@@ -103,9 +103,9 @@ const routerInit = (router) => {
     // permit(router, ['coach', 'admin', 'developer'])
     // routes.coach(router)
 
-    // // Admin routes
-    // permit(router, ['admin', 'developer'])
-    // routes.admin(router)
+    // Admin routes
+    permit(router, ['admin', 'developer'])
+    routes.admin(router)
 
     // // Developer routes
     // permit(router, ['developer'])
