@@ -1,5 +1,12 @@
-[{
-  "url": "/modules",
-  "controller": "./../controllers/v1/modules",
-  "routes": [{ "method": "post", "function": "create" }]
-}]
+[
+  {
+    "url": "/modules",
+    "controller": "./../controllers/v1/admin/modules",
+    "routes": [
+      {
+        "method": "post",
+        "function": "create"
+      }
+    ]
+  }
+]
