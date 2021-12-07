@@ -6,6 +6,7 @@ const schema = new Schema({
   // Informations
   title: trimmedString,
   descriptions: trimmedString,
+  type: trimmedString,
 
   score: number, // total point of the module
 
