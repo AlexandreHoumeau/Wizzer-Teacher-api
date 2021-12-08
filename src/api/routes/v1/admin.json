@@ -6,6 +6,19 @@
       {
         "method": "post",
         "function": "create"
+      },
+      {
+        "method": "get",
+        "function": "list"
+      },
+      {
+        "url": "/:moduleId",
+        "routes": [
+          {
+            "method": "get",
+            "function": "get"
+          }
+        ]
       }
     ]
   }
