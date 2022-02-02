@@ -41,7 +41,6 @@ const create = async (req, res, next) => {
     await newModules.save()
     return res.json({ $message: 'Module bien enregistré' })
   } catch (err) {
-    console.log(err)
     return next(new CatchError(err))
   }
 }
