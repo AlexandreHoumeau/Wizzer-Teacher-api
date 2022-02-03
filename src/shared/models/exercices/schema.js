@@ -7,14 +7,11 @@ const schema = new Schema({
   title: trimmedString,
 
   // Course
-  googleDocCourse: trimmedString,
-  markdownCourse: trimmedString,
-  textCourse: trimmedString,
+  course: trimmedString,
 
   // Exercice
-  googleDocExercice: trimmedString,
-  markdownExercice: trimmedString,
-  textExercice: trimmedString,
+  exercice: trimmedString,
+  difficulty: trimmedString,
 
   points: number,
 
