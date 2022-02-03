@@ -21,5 +21,15 @@
         ]
       }
     ]
+  },
+  {
+    "url": "/exercices",
+    "controller": "./../controllers/v1/admin/exercices",
+    "routes": [
+      {
+        "method": "post",
+        "function": "create"
+      }
+    ]
   }
 ]

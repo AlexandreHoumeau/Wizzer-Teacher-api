@@ -3,9 +3,17 @@ import Modules from '@models/modules'
 const get = async (req, res, next) => {
   try {
     const { moduleId } = req.params
-    const module = await Modules.findById(moduleId)
+    const modules = await Modules.findById(moduleId)
+    .populate('_exercices')
 
-    return res.json({ module })
+    const mapped = modules._exercices.map((module) => ({
+      title: module.title,
+      points: module.points || 0,
+      difficulty: module.difficulty === 'easy' ? 'success' : module.difficulty === 'medium' ? 'waiting' : 'error',
+      battle: module.battle
+    }))
+    console.log(mapped)
+    return res.json({ modules, _exercices: mapped })
   } catch (err) {
     return next(new CatchError(err))
   }
