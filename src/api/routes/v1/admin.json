@@ -29,6 +29,23 @@
       {
         "method": "post",
         "function": "create"
+      },
+      {
+        "method": "put",
+        "function": "update"
+      },
+      {
+        "url": "/:exerciceId",
+        "routes": [
+          {
+            "method": "delete",
+            "function": "remove"
+          },
+          {
+            "method": "get",
+            "function": "get"
+          }
+        ]
       }
     ]
   }

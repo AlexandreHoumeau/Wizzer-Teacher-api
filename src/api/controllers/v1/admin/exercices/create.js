@@ -4,7 +4,7 @@ import Module from '@models/modules'
 
 const fields = {
   only: [
-    'exercice', 'title', 'difficulty', 'course', 'moduleID'
+    'exercice', 'title', 'difficulty', 'course', 'moduleID', 'points'
   ]
 }
 

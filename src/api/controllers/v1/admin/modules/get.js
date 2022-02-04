@@ -10,9 +10,10 @@ const get = async (req, res, next) => {
       title: module.title,
       points: module.points || 0,
       difficulty: module.difficulty === 'easy' ? 'success' : module.difficulty === 'medium' ? 'waiting' : 'error',
-      battle: module.battle
+      battle: null,
+      actions: module._id
     }))
-    console.log(mapped)
+
     return res.json({ modules, _exercices: mapped })
   } catch (err) {
     return next(new CatchError(err))
