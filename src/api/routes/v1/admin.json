@@ -23,6 +23,24 @@
     ]
   },
   {
+    "url": "/session",
+    "controller": "./../controllers/v1/admin/sessions",
+    "routes": [
+      {
+        "method": "post",
+        "function": "create"
+      },
+      {
+        "method": "get",
+        "function": "get"
+      },
+      {
+        "method": "put",
+        "function": "update"
+      }
+    ]
+  },
+  {
     "url": "/exercices",
     "controller": "./../controllers/v1/admin/exercices",
     "routes": [
