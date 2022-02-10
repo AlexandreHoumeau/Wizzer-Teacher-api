@@ -37,6 +37,15 @@
       {
         "method": "put",
         "function": "update"
+      },
+      {
+        "url": "/:sessionId",
+        "routes": [
+          {
+            "method": "delete",
+            "function": "remove"
+          }
+        ]
       }
     ]
   },
