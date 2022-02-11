@@ -8,5 +8,15 @@
         "function": "me"
       }
     ]
+  },
+  {
+    "url": "/modules",
+    "controller": "./../controllers/v1/admin/modules",
+    "routes": [
+      {
+        "method": "get",
+        "function": "list"
+      }
+    ]
   }
 ]
