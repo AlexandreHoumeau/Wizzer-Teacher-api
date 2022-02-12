@@ -10,7 +10,7 @@
     ]
   },
   {
-    "url": "/modules",
+    "url": "/user/modules",
     "controller": "./../controllers/v1/admin/modules",
     "routes": [
       {
