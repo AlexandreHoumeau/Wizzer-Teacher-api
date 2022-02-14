@@ -1,3 +1,4 @@
 import list from './list'
+import get from './get'
 
-export default { list }
+export default { list, get }
