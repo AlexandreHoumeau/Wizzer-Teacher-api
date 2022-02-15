@@ -19,7 +19,7 @@ const schema = new Schema({
   _createdAt: dateDefault,
 
   // Liaisons
-  // _sessions: { type: Schema.Types.ObjectId, ref: 'Sessions' },
+  _tests: [{ type: Schema.Types.ObjectId, ref: 'Test' }],
   _module: { type: Schema.Types.ObjectId, ref: 'Modules' }
 })
 
