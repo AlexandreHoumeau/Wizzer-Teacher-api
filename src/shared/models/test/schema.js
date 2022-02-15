@@ -7,7 +7,7 @@ const schema = new Schema({
   _submitedAt: date,
 
   _exercice: { type: Schema.Types.ObjectId, ref: 'Exercice' },
-  _module: { type: Schema.Types.ObjectId, ref: 'Module' },
+  _module: { type: Schema.Types.ObjectId, ref: 'Modules' },
   _user: { type: Schema.Types.ObjectId, ref: 'Person' },
 
   // Informations
