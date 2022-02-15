@@ -16,6 +16,15 @@
       {
         "method": "post",
         "function": "create"
+      },
+      {
+        "url": "/:testId",
+        "routes": [
+          {
+            "method": "get",
+            "function": "get"
+          }
+        ]
       }
     ]
   },
