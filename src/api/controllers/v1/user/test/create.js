@@ -1,4 +1,5 @@
 import Test from '@models/test'
+import Exercice from '@models/exercices'
 import Person from '@models/person'
 import Request from '@utils/request'
 
@@ -18,6 +19,12 @@ const create = async (req, res, next) => {
       return next(new CatchError('Utilisateur introuvable'))
     }
 
+    const exercice = await Exercice.findById(_exercice)
+
+    if (!exercice) {
+      return next(new CatchError('Exercice introuvable'))
+    }
+
     const test = new Test({
       _exercice,
       _module,
@@ -30,9 +37,12 @@ const create = async (req, res, next) => {
       return next(new CatchError('Un problème est survenue'))
     }
 
+    exercice._tests.push(test._id)
+    await exercice.save()
+
     return res.json({ test })
   } catch (error) {
-    return next(CatchError(error))
+    return next(new CatchError(error))
   }
 }
 

@@ -3,6 +3,14 @@ import Modules from '@models/modules'
 const list = async (req, res, next) => {
   try {
     const modules = await Modules.find()
+    .populate({
+      path: '_exercices',
+      populate: {
+        path: '_tests',
+        match: { _user: req.user._id }
+      }
+    })
+    .exec()
 
     if (!modules?.length) {
       return next(new CatchError('Aucun module trouvé'))
