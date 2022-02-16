@@ -23,6 +23,10 @@
           {
             "method": "get",
             "function": "get"
+          },
+          {
+            "method": "put",
+            "function": "update"
           }
         ]
       }
