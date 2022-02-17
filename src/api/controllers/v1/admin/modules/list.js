@@ -7,7 +7,6 @@ const list = async (req, res, next) => {
     if (!modules?.length) {
       return next(new CatchError('Aucun module trouvé'))
     }
-
     const mapped = modules.reduce((acc, module) => {
       if (module.type === 'dev') {
         acc.dev.push(module)
