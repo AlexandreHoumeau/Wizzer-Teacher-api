@@ -10,8 +10,7 @@ const get = async (req, res, next) => {
       return res.json({})
     }
 
-    
-
+    return res.json({ session })
   } catch (error) {
     return next(CatchError(error))
   }
