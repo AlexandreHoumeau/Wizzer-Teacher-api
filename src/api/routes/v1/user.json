@@ -50,5 +50,15 @@
         ]
       }
     ]
+  },
+  {
+    "url": "/user/session",
+    "controller": "./../controllers/v1/user/session",
+    "routes": [
+      {
+        "method": "get",
+        "function": "get"
+      }
+    ]
   }
 ]
