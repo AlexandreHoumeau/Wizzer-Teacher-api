@@ -1,4 +1,5 @@
 import Session from '@models/session'
+import moment from 'moment'
 
 const get = async (req, res, next) => {
   try {
@@ -10,7 +11,18 @@ const get = async (req, res, next) => {
       return res.json({})
     }
 
-    return res.json({ session })
+    // Find check if session.days is today
+    const today = moment().startOf('day')
+    let todayExercices = null
+
+    for (const d of session.days) {
+      const isToday = moment(d.currentDay).startOf('day').isSame(today)
+      if (isToday) {
+        todayExercices = d
+      }
+    }
+
+    return res.json({ todayExercices })
   } catch (error) {
     return next(CatchError(error))
   }
