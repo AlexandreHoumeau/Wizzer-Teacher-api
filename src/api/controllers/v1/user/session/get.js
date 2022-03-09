@@ -21,7 +21,7 @@ const get = async (req, res, next) => {
         todayExercices = d
       }
     }
-
+    console.log(session)
     return res.json({ todayExercices })
   } catch (error) {
     return next(CatchError(error))
