@@ -13,7 +13,7 @@ const get = async (req, res, next) => {
 
     // Find check if session.days is today
     const today = moment().startOf('day')
-    let todayExercices = null
+    let todayExercices = []
 
     for (const d of session.days) {
       const isToday = moment(d.currentDay).startOf('day').isSame(today)
@@ -21,7 +21,7 @@ const get = async (req, res, next) => {
         todayExercices = d
       }
     }
-    console.log(session)
+
     return res.json({ todayExercices })
   } catch (error) {
     return next(CatchError(error))
