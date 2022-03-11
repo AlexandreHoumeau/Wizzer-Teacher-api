@@ -6,6 +6,17 @@ const get = async (req, res, next) => {
     const session = await Session.findOne({
       isOnline: true
     })
+    .populate({
+      path: 'days',
+      populate: {
+        path: '_exercices',
+        select: 'title _module points',
+        populate: {
+          path: '_module',
+          select: 'title'
+        }
+      }
+    })
 
     if (!session) {
       return res.json({})
@@ -18,6 +29,7 @@ const get = async (req, res, next) => {
     for (const d of session.days) {
       const isToday = moment(d.currentDay).startOf('day').isSame(today)
       if (isToday) {
+        console.log(d)
         todayExercices = d
       }
     }
