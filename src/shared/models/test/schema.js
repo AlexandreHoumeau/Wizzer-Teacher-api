@@ -9,6 +9,7 @@ const schema = new Schema({
   _exercice: { type: Schema.Types.ObjectId, ref: 'Exercice' },
   _module: { type: Schema.Types.ObjectId, ref: 'Modules' },
   _user: { type: Schema.Types.ObjectId, ref: 'Person' },
+  _battle: { type: Schema.Types.ObjectId, ref: 'Session' },
 
   // Informations
   score: number,

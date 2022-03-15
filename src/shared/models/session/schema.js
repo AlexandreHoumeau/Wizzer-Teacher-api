@@ -8,7 +8,8 @@ const schema = new Schema({
 
   days: [{
     _exercices: [{ type: Schema.Types.ObjectId, ref: 'Exercice' }],
-    currentDay: date
+    currentDay: date,
+    _tests: [{ type: Schema.Types.ObjectId, ref: 'tests'}]
   }]
 })
 
