@@ -1,18 +1,18 @@
 import Test from '@models/test'
 import Exercice from '@models/exercices'
 import Person from '@models/person'
+import Session from '@models/session'
 import Request from '@utils/request'
 
 const fields = {
   only: [
-    '_exercice', '_module'
+    '_exercice', 'repository', 'battle'
   ]
 }
 const create = async (req, res, next) => {
   try {
     // await Request.validator(req.body, validation.rules, validation.messages)
-    const { _exercice, _module } = await Request.values(req.body, fields)
-
+    const { _exercice, battle, repository } = await Request.values(req.body, fields)
     const user = await Person.findById(req.user._id)
 
     if (!user) {
@@ -27,9 +27,22 @@ const create = async (req, res, next) => {
 
     const test = new Test({
       _exercice,
-      _module,
+      _module: exercice._module,
       _user: user._id
     })
+
+    if (battle) {
+      const currentBattle = await Session.findOne({
+        isOnline: true
+      })
+      if (currentBattle) {
+        test._battle = currentBattle._id
+      }
+    }
+
+    if (repository) {
+      test.repository = repository
+    }
 
     await test.save()
 

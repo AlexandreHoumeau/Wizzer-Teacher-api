@@ -10,13 +10,17 @@ const get = async (req, res, next) => {
       path: 'days',
       populate: {
         path: '_exercices',
-        select: 'title _module points',
-        populate: {
+        select: 'title _module _tests points difficulty',
+        populate: [{
           path: '_module',
           select: 'title'
-        }
+        }, {
+          path: '_tests',
+          select: '_user'
+        }]
       }
     })
+    .exec()
 
     if (!session) {
       return res.json({})
@@ -24,19 +28,27 @@ const get = async (req, res, next) => {
 
     // Find check if session.days is today
     const today = moment().startOf('day')
-    let todayExercices = []
+    const todayExercices = []
 
-    for (const d of session.days) {
+    session.days.forEach((d) => {
       const isToday = moment(d.currentDay).startOf('day').isSame(today)
       if (isToday) {
-        console.log(d)
-        todayExercices = d
+        d?._exercices?.forEach((exo) => {
+          todayExercices.push({
+            _id: exo._id,
+            title: exo.title,
+            difficulty: exo.difficulty,
+            points: exo.points,
+            _module: exo._module,
+            isDone: !!exo._tests.find((t) => String(t._user) === String(req.user._id))
+          })
+        })
       }
-    }
+    })
 
     return res.json({ todayExercices })
   } catch (error) {
-    return next(CatchError(error))
+    return next(new CatchError(error))
   }
 }
 
