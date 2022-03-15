@@ -60,5 +60,20 @@
         "function": "get"
       }
     ]
+  },
+  {
+    "url": "/user/exercice",
+    "controller": "./../controllers/v1/user/exercice",
+    "routes": [
+      {
+        "url": "/:exerciceId",
+        "routes": [
+          {
+            "method": "get",
+            "function": "get"
+          }
+        ]
+      }
+    ]
   }
 ]
