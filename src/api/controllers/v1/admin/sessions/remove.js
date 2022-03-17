@@ -9,7 +9,9 @@ const remove = async (req, res, next) => {
       return next(new NotFoundError('Aucune session trouvé avec cet identifiant'))
     }
 
-    await session.remove()
+    session.isOnline = false
+
+    await session.save()
 
     return res.json({ $message: 'Session bien supprimé' })
   } catch (error) {

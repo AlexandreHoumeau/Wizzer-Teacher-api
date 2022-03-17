@@ -22,6 +22,8 @@ const create = async (req, res, next) => {
 
     await session.set(data)
 
+    session.isOnline = true
+
     await session.save()
 
     return res.json({ session, $message: 'Session correctement enregistré' })

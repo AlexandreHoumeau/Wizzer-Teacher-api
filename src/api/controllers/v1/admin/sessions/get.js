@@ -2,7 +2,9 @@ import Session from '@models/session'
 
 const get = async (req, res, next) => {
   try {
-    const session = await Session.findOne()
+    const session = await Session.findOne({
+      isOnline: true
+    })
     .populate({
       path: 'days._exercices',
       populate: {
