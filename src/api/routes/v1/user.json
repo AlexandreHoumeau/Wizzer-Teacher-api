@@ -58,6 +58,29 @@
       {
         "method": "get",
         "function": "get"
+      },
+      {
+        "url": "/:sessionId",
+        "routes": [
+          {
+            "url": "/ranking",
+            "routes": [
+              {
+                "method": "get",
+                "function": "ranking"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/list",
+        "routes": [
+          {
+            "method": "get",
+            "function": "list"
+          }
+        ]
       }
     ]
   },
