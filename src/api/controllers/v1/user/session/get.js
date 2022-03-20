@@ -35,18 +35,24 @@ const get = async (req, res, next) => {
       if (isToday) {
         d?._exercices?.forEach((exo) => {
           todayExercices.push({
-            _id: exo._id,
             title: exo.title,
-            difficulty: exo.difficulty,
+            moduleTitle: exo._module.title,
+            difficulty: exo.difficultydifficulty === 'easy'
+              ? 'success'
+              : exo.difficulty === 'medium'
+                ? 'waiting'
+                : 'error',
             points: exo.points,
-            _module: exo._module,
-            isDone: !!exo._tests.find((t) => String(t._user) === String(req.user._id))
+            status: {
+              type: !!exo._tests.find((t) => String(t._user) === String(req.user._id)),
+              id: exo._id
+            }
           })
         })
       }
     })
 
-    return res.json({ todayExercices })
+    return res.json({ todayExercices, session })
   } catch (error) {
     return next(new CatchError(error))
   }
