@@ -23,6 +23,16 @@
     ]
   },
   {
+    "url": "/stats",
+    "controller": "./../controllers/v1/admin",
+    "routes": [
+      {
+        "method": "get",
+        "function": "stats"
+      }
+    ]
+  },
+  {
     "url": "/session",
     "controller": "./../controllers/v1/admin/sessions",
     "routes": [

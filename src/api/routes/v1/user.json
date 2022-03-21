@@ -10,6 +10,16 @@
     ]
   },
   {
+    "url": "/user/stats",
+    "controller": "./../controllers/v1/user",
+    "routes": [
+      {
+        "method": "get",
+        "function": "stats"
+      }
+    ]
+  },
+  {
     "url": "/user/test",
     "controller": "./../controllers/v1/user/test",
     "routes": [
