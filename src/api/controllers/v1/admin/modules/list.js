@@ -15,10 +15,8 @@ const list = async (req, res, next) => {
       }
       return acc
     }, { dev: [], design: []})
-    console.log(mapped)
     return res.json({ dev: mapped.dev, design: mapped.design })
   } catch (err) {
-    console.log(err)
     return next(new CatchError(err))
   }
 }

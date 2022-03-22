@@ -6,7 +6,6 @@ const fields = ['exercice', 'exerciceId']
 const update = async (req, res, next) => {
   try {
     const data = await Request.values(req.body, fields)
-    console.log(req.body)
     const exercice = await Exercice.findById(data.exerciceId)
 
     if (!exercice) {
