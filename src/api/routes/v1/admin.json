@@ -33,6 +33,38 @@
     ]
   },
   {
+    "url": "/users",
+    "controller": "./../controllers/v1/admin/user",
+    "routes": [
+      {
+        "method": "get",
+        "function": "list"
+      },
+      {
+        "url": "/:userId",
+        "routes": [
+          {
+            "method": "get",
+            "function": "get"
+          },
+          {
+            "method": "delete",
+            "function": "deleteUser"
+          },
+          {
+            "url": "/stats",
+            "routes": [
+              {
+                "method": "get",
+                "function": "stats"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "url": "/session",
     "controller": "./../controllers/v1/admin/sessions",
     "routes": [
