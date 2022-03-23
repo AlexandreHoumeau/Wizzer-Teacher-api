@@ -9,6 +9,15 @@
     {
       "url": "/register",
       "routes": [{ "method": "post", "function": "register" }]
+    },
+    {
+      "url": "/password",
+      "routes": [
+        {
+          "method": "post",
+          "function": "password"
+        }
+      ]
     }
   ]
 }]
