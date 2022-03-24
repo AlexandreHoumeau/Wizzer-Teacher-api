@@ -33,12 +33,31 @@
     ]
   },
   {
+    "url": "/tests",
+    "controller": "./../controllers/v1/admin/test",
+    "routes": [
+      {
+        "method": "get",
+        "function": "list"
+      }
+    ]
+  },
+  {
     "url": "/users",
     "controller": "./../controllers/v1/admin/user",
     "routes": [
       {
         "method": "get",
         "function": "list"
+      },
+      {
+        "url": "/:keyword",
+        "routes": [
+          {
+            "method": "post",
+            "function": "search"
+          }
+        ]
       },
       {
         "url": "/:userId",

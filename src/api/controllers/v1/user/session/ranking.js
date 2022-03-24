@@ -42,6 +42,7 @@ const ranking = async (req, res, next) => {
                   userParticipation: 1,
                   firstName: test._user.firstName,
                   lastName: test._user.lastName,
+                  picture: test._user.picture,
                   userScore: test._user.score || 0
                 })
               } else {

@@ -26,6 +26,11 @@ const fields = {
   ]
 }
 
+const generateAvatar = () => {
+  const index = Math.floor(Math.random() * (12 - 1 + 1) + 1)
+  return `https://wizzer-teacher.s3.eu-west-3.amazonaws.com/kidaha-${index > 9 ? index : `0${index}`}.png`
+}
+
 export default async (req, res, next) => {
   try {
     // Validation des champs
@@ -43,7 +48,8 @@ export default async (req, res, next) => {
     // Initialisation du compte avec les valeurs par défaut
     person = new Person({
       isActive: true,
-      lastLogin: new Date()
+      lastLogin: new Date(),
+      picture: generateAvatar()
     })
     // On valide automatiquement le compte client si c'est spécifié
     if (person.type === 'teacher' && req.body.isVerified) {
