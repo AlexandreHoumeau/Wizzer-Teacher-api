@@ -1,15 +1,12 @@
 import Test from '@models/test'
-import parseJSON from '@shared/utils/json'
+import Request from '@utils/request'
 
 const list = async (req, res, next) => {
   try {
-    const query = parseJSON(req.query)
-    const { $filter, $populate } = parseJSON(query)
+    const query = await Request.query(req)
 
-    const tests = await Test.find($filter)
-    .populate($populate)
-
-    console.log(tests)
+    const tests = await Test.find(query.$filter)
+    .populate(query.$populate)
 
     return res.json({ tests })
   } catch (error) {
