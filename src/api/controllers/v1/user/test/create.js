@@ -28,7 +28,8 @@ const create = async (req, res, next) => {
     const test = new Test({
       _exercice,
       _module: exercice._module,
-      _user: user._id
+      _user: user._id,
+      status: 'pending'
     })
 
     if (battle) {
