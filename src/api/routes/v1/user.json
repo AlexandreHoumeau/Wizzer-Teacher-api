@@ -99,6 +99,10 @@
     "controller": "./../controllers/v1/user/exercice",
     "routes": [
       {
+        "method": "get",
+        "function": "list"
+      },
+      {
         "url": "/:exerciceId",
         "routes": [
           {

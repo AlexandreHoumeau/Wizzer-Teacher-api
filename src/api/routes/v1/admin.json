@@ -39,6 +39,15 @@
       {
         "method": "get",
         "function": "list"
+      },
+      {
+        "url": "/:testId",
+        "routes": [
+          {
+            "method": "put",
+            "function": "update"
+          }
+        ]
       }
     ]
   },
