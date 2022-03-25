@@ -15,7 +15,7 @@ const update = async (req, res, next) => {
     const session = await Session.findById(data.sessionId)
 
     if (!session) {
-      return next(new NotFoundError('Aucune session trouvé avec cet identifiant'))
+      return next(new NotFoundError('Aucune Battle trouvé avec cet identifiant'))
     }
 
     const newValue = {

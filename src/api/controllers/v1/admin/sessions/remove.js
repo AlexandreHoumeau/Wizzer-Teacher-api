@@ -13,7 +13,7 @@ const remove = async (req, res, next) => {
 
     await session.save()
 
-    return res.json({ $message: 'Session bien supprimé' })
+    return res.json({ $message: 'Battle bien supprimé' })
   } catch (error) {
     return next(new CatchError(error))
   }

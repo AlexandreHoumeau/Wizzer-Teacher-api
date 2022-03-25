@@ -51,7 +51,7 @@ const stats = async (req, res, next) => {
       })
 
       return acc
-    }, { exoDone: 0, moduleDone: 0, modulesParticipation: [], goodExercices: 2, nmbExercices: 0, randomExercice: []})
+    }, { exoDone: 0, moduleDone: 0, modulesParticipation: [], goodExercices: 0, nmbExercices: 0, randomExercice: []})
 
     statsReduce.modulesParticipation.sort((a, b) => ((b.exerciceDone / b.exercices) * 100) - ((a.exerciceDone / a.exercices) * 100))
     statsReduce.moduleDone = statsReduce.modulesParticipation.filter((mp) => mp.exerciceDone > 0).length
